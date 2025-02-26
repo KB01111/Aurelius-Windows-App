@@ -1,0 +1,115 @@
+<Window x:Class="Aurelius.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Aurelius"
+        mc:Ignorable="d"
+        Title="Aurelius - Stock Analysis Platform" 
+        Height="800" 
+        Width="1200"
+        MinHeight="600"
+        MinWidth="800"
+        WindowStartupLocation="CenterScreen">
+    
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        
+        <!-- Menu Bar -->
+        <Menu Grid.Row="0" Background="White" BorderBrush="LightGray" BorderThickness="0,0,0,1">
+            <MenuItem Header="File">
+                <MenuItem Header="New Portfolio"/>
+                <MenuItem Header="Open"/>
+                <MenuItem Header="Save"/>
+                <Separator/>
+                <MenuItem Header="Import Data"/>
+                <MenuItem Header="Export Data"/>
+                <Separator/>
+                <MenuItem Header="Exit"/>
+            </MenuItem>
+            <MenuItem Header="View">
+                <MenuItem Header="Dashboard"/>
+                <MenuItem Header="Stock Search"/>
+                <MenuItem Header="Portfolio"/>
+                <MenuItem Header="AI Assistant"/>
+                <Separator/>
+                <MenuItem Header="Refresh Data"/>
+                <MenuItem Header="Full Screen" InputGestureText="F11"/>
+            </MenuItem>
+            <MenuItem Header="Tools">
+                <MenuItem Header="Chart Analysis"/>
+                <MenuItem Header="Screener"/>
+                <MenuItem Header="News Scanner"/>
+                <Separator/>
+                <MenuItem Header="Settings"/>
+            </MenuItem>
+            <MenuItem Header="Help">
+                <MenuItem Header="Documentation"/>
+                <MenuItem Header="API References"/>
+                <Separator/>
+                <MenuItem Header="About Aurelius"/>
+            </MenuItem>
+        </Menu>
+        
+        <!-- Main Content -->
+        <TabControl Grid.Row="1" Margin="5" Background="White">
+            <!-- Dashboard Tab -->
+            <TabItem Header="Dashboard">
+                <local:DashboardView/>
+            </TabItem>
+            
+            <!-- Stock Search Tab -->
+            <TabItem Header="Stock Search">
+                <local:StockSearchView/>
+            </TabItem>
+            
+            <!-- Portfolio Tab -->
+            <TabItem Header="Portfolio">
+                <local:PortfolioView/>
+            </TabItem>
+            
+            <!-- AI Assistant Tab -->
+            <TabItem Header="AI Assistant">
+                <local:AIAssistantView/>
+            </TabItem>
+            
+            <!-- Settings Tab -->
+            <TabItem Header="Settings">
+                <local:SettingsView/>
+            </TabItem>
+        </TabControl>
+        
+        <!-- Status Bar -->
+        <Grid Grid.Row="2" Background="LightGray" Height="25">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            
+            <!-- Market Status -->
+            <TextBlock Grid.Column="0" 
+                       Text="Market Open | S&amp;P 500: +0.35% | NASDAQ: +0.78% | DOW: -0.12%" 
+                       Margin="10,0,0,0" 
+                       VerticalAlignment="Center"/>
+            
+            <!-- Data Refresh Indicator -->
+            <TextBlock Grid.Column="2" 
+                       Text="Last updated: 5:32 PM" 
+                       Margin="0,0,10,0" 
+                       VerticalAlignment="Center"/>
+            
+            <!-- Clock -->
+            <TextBlock Name="ClockDisplay" 
+                       Grid.Column="3" 
+                       Text="12:00:00 PM" 
+                       Margin="0,0,10,0" 
+                       VerticalAlignment="Center"/>
+        </Grid>
+    </Grid>
+</Window>
